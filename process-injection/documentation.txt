@@ -1,0 +1,48 @@
+ /*HANDLE OpenProcess(
+        DWORD dwDesiredAccess,
+        BOOL  bInheritHandle,
+        DWORD dwProcessId
+        );
+    dwDesiredAccess: Specifies the access rights to the process. This parameter is a bitmask that determines the requested access level, such as PROCESS_ALL_ACCESS for full access.
+    bInheritHandle: A boolean flag indicating whether the returned handle can be inherited by child processes.
+    dwProcessId: The process identifier (PID) of the target process.
+    If the function succeeds, it returns a handle to the specified process.
+    If the function fails, it returns NULL. To get extended error information, you can call GetLastError().
+    */
+
+
+
+    /*
+    LPVOID VirtualAllocEx(
+        HANDLE hProcess,
+        LPVOID lpAddress,
+        SIZE_T dwSize,
+        DWORD  flAllocationType,
+        DWORD  flProtect
+    );
+    hProcess: A handle to the process in which to allocate memory.
+    lpAddress: The desired starting address of the region of memory. If NULL, the system determines the base address.
+    dwSize: The size of the region of memory to allocate, in bytes.
+    flAllocationType: The type of memory allocation. Common values include MEM_COMMIT (to reserve and commit a region of pages) and MEM_RESERVE (to reserve a range of the process's virtual address space without allocating physical storage).
+    flProtect: The memory protection for the region of pages to be allocated. Common values include PAGE_EXECUTE_READWRITE (read/write/execute access).
+     If the function succeeds, it returns the base address of the allocated region of memory.
+    If the function fails, it returns NULL. To get extended error information, you can call GetLastError().
+    */
+
+
+    BOOL WriteProcessMemory(
+        HANDLE  hProcess,
+        LPVOID  lpBaseAddress,
+        LPCVOID lpBuffer,
+        SIZE_T  nSize,
+        SIZE_T  *lpNumberOfBytesWritten
+    );
+hProcess: A handle to the process to which data will be written.
+lpBaseAddress: The starting address in the target process's address space where data will be written.
+lpBuffer: A pointer to the buffer that contains the data to be written to the target process.
+nSize: The number of bytes to write from the buffer to the target process.
+lpNumberOfBytesWritten: A pointer to the variable that receives the number of bytes actually written to the target process.
+If the function succeeds, it returns a non-zero value.
+If the function fails, it returns 0. To get extended error information, you can call GetLastError().
+
+
